@@ -73,7 +73,7 @@ npm run dev
 }
 ```
 
-## folder structure:
+## Folder Structure:
 
 ```bash
 car-store/
