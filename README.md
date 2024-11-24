@@ -32,47 +32,49 @@ This project is developed using TypeScript, Express, Mongoose.
 
 Project & packages
 
+**Initialize package**
+
 ```bash
 npm init -y
 ```
 
-Install typescript
+**Install typescript**
 
 ```bash
 npm i typescript
 ```
 
-Install express
+**Install express**
 
 ```bash
 npm install express
 ```
 
-Install ts-node-dev
+**Install ts-node-dev**
 
 ```bash
 npm install ts-node-dev
 ```
 
-Install dotevn
+**Install dotevn**
 
 ```bash
 npm install dotenv
 ```
 
-Install cors
+**Install cors**
 
 ```bash
 npm install cors
 ```
 
-Install mongoose
+**Install mongoose**
 
 ```bash
 npm install mongoose
 ```
 
-Start the server
+**Start the server**
 
 ```bash
 npm run dev
