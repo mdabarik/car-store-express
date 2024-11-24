@@ -1,0 +1,8 @@
+
+
+-- initial project setup
+-- install ts-node-dev and to script
+
+
+-- create app.ts and server.ts
+-- setup config dotenv
