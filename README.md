@@ -24,10 +24,6 @@ This project is developed using TypeScript, Express, Mongoose.
 
 **MongoDB:** Setup MongoDB locally and on cloud
 
-## Follow the instructions
-
-## Getting Started
-
 ### Prerequisites
 
 - Node.js (v14 or later)
