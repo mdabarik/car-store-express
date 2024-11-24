@@ -36,6 +36,32 @@ const createOrder = async (req: Request, res: Response) => {
   }
 }
 
+const computeTotalRevenue = async (req: Request, res: Response) => {
+  try {
+    const revenue = await orderService.computeTotalRevenue()
+    res.status(200).send({
+      message: 'Revenue calculated successfully',
+      status: true,
+      data: {
+        totalRevenue: revenue,
+      },
+    })
+  } catch (error: any) {
+    console.log(error)
+    res.status(500).send({
+      message: 'Something went wrong',
+      success: false,
+      error: error.message,
+      stack: error.stack,
+    })
+  }
+}
+
+export const orderController = {
+  createOrder,
+  computeTotalRevenue,
+}
+
 /*
 const getCar = async (req: Request, res: Response) => {
   try {
@@ -127,7 +153,3 @@ const deleteCar = async (req: Request, res: Response) => {
   }
 }
 */
-
-export const orderController = {
-  createOrder,
-}
