@@ -37,7 +37,9 @@ const createCar = async (req: Request, res: Response) => {
 
 const getCar = async (req: Request, res: Response) => {
   try {
-    const result = await carService.getCar()
+    const searchTerm = req.query.searchTerm
+    // console.log(req.query.searchTerm)
+    const result = await carService.getCar(searchTerm as string)
 
     res.status(200).send({
       success: true,

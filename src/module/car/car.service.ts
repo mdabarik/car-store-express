@@ -6,9 +6,23 @@ const createCar = async (payload: ICar) => {
   return result
 }
 
-const getCar = async () => {
-  const result = await Car.find()
-  return result
+const getCar = async (searchTerm: string) => {
+  let query = {}
+  if (searchTerm) {
+    query = {
+      $or: [
+        { brand: new RegExp(searchTerm, 'i') },
+        { model: new RegExp(searchTerm, 'i') },
+        { category: new RegExp(searchTerm, 'i') },
+      ],
+    }
+  }
+  const result = await Car.find(query)
+  return {
+    message: 'Cars retrieved successfully',
+    status: true,
+    data: result,
+  }
 }
 
 const getSingleCar = async (id: string) => {
