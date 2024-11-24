@@ -1,6 +1,14 @@
 import Joi from 'joi'
 
 export const carValidationSchema = Joi.object({
+  id: Joi.string()
+    .regex(/^[0-9a-fA-F]{24}$/)
+    .optional()
+    .messages({
+      'string.base': '"id" should be a string',
+      'string.pattern.base': '"id" must be a valid MongoDB ObjectId',
+    }),
+
   brand: Joi.string().min(1).max(50).required().messages({
     'string.base': '"brand" should be a string',
     'string.empty': '"brand" cannot be empty',

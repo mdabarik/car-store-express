@@ -1,20 +1,36 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express'
 import { carService } from './car.service'
+import { carValidationSchema } from './car.validation'
 
 const createCar = async (req: Request, res: Response) => {
   try {
     const body = req.body
+
+    const { error } = carValidationSchema.validate(body)
+
+    if (error) {
+      res.status(400).send({
+        message: 'Something went wrong',
+        success: false,
+        error: error,
+        stack: error.stack,
+      })
+      return
+    }
+
     const result = await carService.createCar(body)
     res.status(200).send({
       success: true,
       message: 'Car created successfully',
       result: result,
     })
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).send({
-      success: true,
       message: 'Something went wrong',
+      success: false,
       error: error,
+      stack: error.stack,
     })
   }
 }
@@ -22,16 +38,18 @@ const createCar = async (req: Request, res: Response) => {
 const getCar = async (req: Request, res: Response) => {
   try {
     const result = await carService.getCar()
+
     res.status(200).send({
       success: true,
-      message: 'Car get successfully',
+      message: 'Cars retrieved successfully',
       result: result,
     })
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).send({
-      success: true,
-      message: 'Something went wrong',
+      message: 'Fail to retrieve cars',
+      success: false,
       error: error,
+      stack: error.stack,
     })
   }
 }
@@ -42,14 +60,15 @@ const getSingleCar = async (req: Request, res: Response) => {
     const result = await carService.getSingleCar(carId)
     res.status(200).send({
       success: true,
-      message: 'Car get successfully',
+      message: 'Car retrieved successfully',
       result: result,
     })
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).send({
-      success: true,
-      message: 'Something went wrong',
+      message: 'Failed to retrieve car',
+      success: false,
       error: error,
+      stack: error.stack,
     })
   }
 }
@@ -58,17 +77,31 @@ const updateCar = async (req: Request, res: Response) => {
   try {
     const carId = req.params.carId
     const body = req.body
+
+    // joi validation
+    const { error } = carValidationSchema.validate(body)
+    if (error) {
+      res.status(400).send({
+        message: 'Something went wrong',
+        success: false,
+        error: error,
+        stack: error.stack,
+      })
+      return
+    }
+
     const result = await carService.updateCar(carId, body)
     res.status(200).send({
       success: true,
       message: 'Car updated successfully',
       result: result,
     })
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).send({
-      success: true,
-      message: 'Something went wrong',
+      message: 'Fail to update car',
+      success: false,
       error: error,
+      stack: error.stack,
     })
   }
 }
@@ -82,11 +115,12 @@ const deleteCar = async (req: Request, res: Response) => {
       message: 'Car deleted successfully',
       result: result,
     })
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).send({
-      success: true,
-      message: 'Something went wrong',
+      message: 'Failed to delete car',
+      success: false,
       error: error,
+      stack: error.stack,
     })
   }
 }

@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-export const orderValidationSchema = Joi.object({
+export const orderValidation = Joi.object({
   email: Joi.string().email().required().messages({
     'string.base': '"email" should be a string',
     'string.email': '"email" must be a valid email address',
