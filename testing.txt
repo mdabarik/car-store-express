@@ -1,0 +1,63 @@
+/*
+
+https://car-store-express.vercel.app/
+api/cars/
+api/orders
+api/orders/revenue
+
+1. testing
+Create car: POST
+https://car-store-express.vercel.app/api/cars/
+{
+  "brand": "Toyota",
+  "model": "Camry",
+  "year": 2024,
+  "price": 25000,
+  "category": "Sedan",
+  "description": "A reliable family sedan with modern features.",
+  "quantity": 50,
+  "inStock": true
+}
+
+test by chaning category
+
+2. testing
+Get Cars: GET
+https://car-store-express.vercel.app/api/cars?searchTerm=category
+
+3. testing
+Get Car by Id: GET
+https://car-store-express.vercel.app/api/cars/:carId
+
+4. testing
+Update Car: PUT
+https://car-store-express.vercel.app/api/cars/:carId
+{
+  "price": 27000,
+  "quantity": 30
+}
+
+5. testing
+Delete Car: DELETE
+https://car-store-express.vercel.app/api/cars/:carId
+
+6. testing
+Order car: POST
+{
+  "email": "customer@example.com",
+  "car": "648a45e5f0123c45678d9012",
+  "quantity": 1,
+  "totalPrice": 27000
+}
+https://car-store-express.vercel.app/api/orders/
+
+7. testing
+Revenue: GET
+https://car-store-express.vercel.app/api/orders/revenue/
+
+
+
+
+
+
+**/
