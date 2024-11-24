@@ -26,16 +26,24 @@ This project is developed using TypeScript, Express, Mongoose.
 
 ## Follow the instructions
 
-project initialize using
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- npm (v6 or later)
+- MongoDB (local instance or cloud-based)
+
+Project & packages
 
 ```bash
-  npm init -y
+npm init -y
 ```
 
 Install typescript
 
 ```bash
-  npm i typescript
+npm i typescript
 ```
 
 Install express
