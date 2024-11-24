@@ -1,0 +1,31 @@
+1. Vercel
+
+(first time steps)
+- create vercel.json
+- Vercel CLI
+    - Install
+    - npm i -g vercel
+    - vercel login -> github
+    (for every project)
+    - vercel --prod
+    - yes, name, no, name (keep it or rename), ./ enter, inspect link..
+    - click on inspect link >> project name > project tab > domains link
+    link: car-store-express.vercel.app
+
+    https://car-store-express.vercel.app/
+
+    - delete .vercel folder if we want to deploy it again 
+
+    // issues occur if vercel
+    - npx vercel login
+    - npx vercel logout
+- GitHub
+
+
+
+
+-- without install process
+(for first time)
+npx vercel login
+(for every project)
+npx vercel --prod

@@ -23,6 +23,7 @@ const createCar = async (req: Request, res: Response) => {
     }
 
     const result = await carService.createCar(body)
+
     res.status(200).send({
       message: 'Car created successfully',
       success: true,
@@ -44,6 +45,14 @@ const getCar = async (req: Request, res: Response) => {
     // console.log(req.query.searchTerm)
     const result = await carService.getCar(searchTerm as string)
 
+    if (result?.data.length == 0) {
+      res.status(404).send({
+        message: '404 Not Found',
+        status: false,
+      })
+      return
+    }
+
     res.status(200).send({
       message: 'Cars retrieved successfully',
       status: true,
@@ -63,6 +72,16 @@ const getSingleCar = async (req: Request, res: Response) => {
   try {
     const carId = req.params.carId
     const result = await carService.getSingleCar(carId)
+
+    // if (Object.keys(result).length === 0) {
+    //   res.status(404).send({
+    //     message: '404 Not Found',
+    //     status: false,
+    //   })
+    //   return
+    // }
+    // console.log(result)
+
     res.status(200).send({
       message: 'Car retrieved successfully',
       status: true,

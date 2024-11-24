@@ -51,30 +51,30 @@ export const createOrder = async (payload: IOrder) => {
 
 const computeTotalRevenue = async () => {
   try {
-    // total revenue calculation using aggregation
+    // total revenue calculation
     const result = await Order.aggregate([
       {
         $lookup: {
-          from: 'cars', // collection name
-          localField: 'car', // foreign key
-          foreignField: '_id', // primary key
-          as: 'carDetails', // result array name carDetails
+          from: 'cars',
+          localField: 'car',
+          foreignField: '_id',
+          as: 'carDetails',
         },
       },
       {
-        $unwind: '$carDetails', // flatten carDetails array
+        $unwind: '$carDetails',
       },
       {
         $project: {
           totalRevenue: {
-            $multiply: ['$carDetails.price', '$quantity'], // total revenue for each order
+            $multiply: ['$carDetails.price', '$quantity'],
           },
         },
       },
       {
         $group: {
-          _id: null, // group everything into one document
-          totalRevenue: { $sum: '$totalRevenue' }, // sum of total revenue
+          _id: null,
+          totalRevenue: { $sum: '$totalRevenue' },
         },
       },
     ])
@@ -84,7 +84,8 @@ const computeTotalRevenue = async () => {
       return 0
     }
 
-    return result[0].totalRevenue // total revenue
+    // total revenue
+    return result[0].totalRevenue
   } catch (error) {
     console.error('Error calculating total revenue:', error)
     throw new Error('Error calculating total revenue')

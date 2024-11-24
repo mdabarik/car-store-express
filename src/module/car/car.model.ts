@@ -46,7 +46,7 @@ const carSchema = new Schema<ICar>(
     },
   },
   {
-    // auto add createdAt and updatedAt field
+    // auto add createdAt and updatedAt
     timestamps: true,
   }
 )
