@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express'
 import { carService } from './car.service'
-import { carValidationSchema } from './car.validation'
+import {
+  carUpdateValidationSchema,
+  carValidationSchema,
+} from './car.validation'
 
 const createCar = async (req: Request, res: Response) => {
   try {
@@ -21,9 +24,9 @@ const createCar = async (req: Request, res: Response) => {
 
     const result = await carService.createCar(body)
     res.status(200).send({
-      success: true,
       message: 'Car created successfully',
-      result: result,
+      success: true,
+      data: result,
     })
   } catch (error: any) {
     res.status(400).send({
@@ -42,9 +45,9 @@ const getCar = async (req: Request, res: Response) => {
     const result = await carService.getCar(searchTerm as string)
 
     res.status(200).send({
-      success: true,
       message: 'Cars retrieved successfully',
-      result: result,
+      status: true,
+      data: result?.data,
     })
   } catch (error: any) {
     res.status(400).send({
@@ -61,9 +64,9 @@ const getSingleCar = async (req: Request, res: Response) => {
     const carId = req.params.carId
     const result = await carService.getSingleCar(carId)
     res.status(200).send({
-      success: true,
       message: 'Car retrieved successfully',
-      result: result,
+      status: true,
+      data: result,
     })
   } catch (error: any) {
     res.status(400).send({
@@ -81,7 +84,7 @@ const updateCar = async (req: Request, res: Response) => {
     const body = req.body
 
     // joi validation
-    const { error } = carValidationSchema.validate(body)
+    const { error } = carUpdateValidationSchema.validate(body)
     if (error) {
       res.status(400).send({
         message: 'Something went wrong',
@@ -94,9 +97,9 @@ const updateCar = async (req: Request, res: Response) => {
 
     const result = await carService.updateCar(carId, body)
     res.status(200).send({
-      success: true,
       message: 'Car updated successfully',
-      result: result,
+      status: true,
+      data: result,
     })
   } catch (error: any) {
     res.status(400).send({
@@ -111,11 +114,11 @@ const updateCar = async (req: Request, res: Response) => {
 const deleteCar = async (req: Request, res: Response) => {
   try {
     const carId = req.params.carId
-    const result = await carService.deleteCar(carId)
+    await carService.deleteCar(carId)
     res.status(200).send({
-      success: true,
       message: 'Car deleted successfully',
-      result: result,
+      status: true,
+      data: {},
     })
   } catch (error: any) {
     res.status(400).send({

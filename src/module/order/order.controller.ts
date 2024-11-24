@@ -12,8 +12,8 @@ const createOrder = async (req: Request, res: Response) => {
 
     if (error) {
       res.status(400).send({
-        message: 'Something went wrong',
         success: false,
+        message: 'Something went wrong',
         error: error,
         stack: error.stack,
       })
@@ -22,9 +22,9 @@ const createOrder = async (req: Request, res: Response) => {
 
     const result = await orderService.createOrder(body)
     res.status(200).send({
-      success: true,
-      message: 'Car created successfully',
-      result: result,
+      status: true,
+      message: 'Order created successfully',
+      data: result?.data,
     })
   } catch (error: any) {
     res.status(400).send({
