@@ -48,7 +48,7 @@ npm install cors
 npm install joi
 ```
 
-## 3. configure environmental variables in (.env file)
+## 3. Configure environmental variables in (.env file)
 
 ```bash
 MONGO_URI=your_mongodb_uri
@@ -61,7 +61,7 @@ PORT=3000
 npm run dev
 ```
 
-## 5. add scripts to the packages.json (npm run dev) & setup eslint, prettier for better development experience
+## 5. Add scripts to the packages.json (npm run dev) & setup eslint, prettier for better development experience
 
 ```bash
 "scripts": {
@@ -75,6 +75,7 @@ npm run dev
 
 ## folder structure:
 
+```bash
 car-store/
 ├── src/
 │ ├── config/
@@ -102,3 +103,4 @@ car-store/
 ├── package.json
 ├── README.md
 └── tsconfig.json
+```
