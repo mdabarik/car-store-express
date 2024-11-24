@@ -20,7 +20,56 @@ This project is developed using TypeScript, Express, Mongoose.
 
 ## Initial requirements
 
-```javascript
-  installing Node.js and npm
-  setting up mongodb on cloud & local
+**Nodejs & NPM:** Download, install & setup node and npm
+
+**MongoDB:** Setup MongoDB locally and on cloud
+
+## Follow the instructions
+
+project initialize using
+
+```bash
+  npm init -y
+```
+
+Install typescript
+
+```bash
+  npm i typescript
+```
+
+Install express
+
+```bash
+npm install express
+```
+
+Install ts-node-dev
+
+```bash
+npm install ts-node-dev
+```
+
+Install dotevn
+
+```bash
+npm install dotenv
+```
+
+Install cors
+
+```bash
+npm install cors
+```
+
+Install mongoose
+
+```bash
+npm install mongoose
+```
+
+Start the server
+
+```bash
+npm run dev
 ```
