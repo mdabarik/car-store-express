@@ -18,5 +18,9 @@ This project is developed using TypeScript, Express, Mongoose.
 
 # Project Setup
 
--- initialize the project using npm
---
+## Initial requirements
+
+```javascript
+  installing Node.js and npm
+  setting up mongodb on cloud & local
+```
